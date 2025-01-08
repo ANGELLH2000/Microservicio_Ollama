@@ -1,6 +1,6 @@
 class OllamaManager{
     constructor(model){
-        this.baseURL = 'http://localhost:11434';
+        this.baseURL = process.env.HOST_OLLAMA;
         this.model = model;
         this.stream = false;
         this.raw = true;
