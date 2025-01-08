@@ -30,7 +30,6 @@ Permite manejar distintos **modelos** (`llama3.1`, `gemma2`, `llama2`) para gene
   - Cantidad de hojas (`/cantidad`)
   - Ambientación (`/ambientacion`)
 
-Consulta la documentación detallada de endpoints en [ENDPOINTS.md](./ENDPOINTS.md).
 
 ---
 
