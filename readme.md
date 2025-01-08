@@ -1,6 +1,6 @@
 # Microservicio Ollama
 
-Este proyecto implementa un **microservicio** en Node.js/Express para conectarse con [Ollama](https://github.com/jmorganca/ollama).  
+Este proyecto implementa un **microservicio** en Node.js/Express para conectarse con Ollama.  
 Permite manejar distintos **modelos** (`llama3.1`, `gemma2`, `llama2`) para generar y procesar respuestas específicas.
 
 ## **Contenido**
@@ -14,8 +14,6 @@ Permite manejar distintos **modelos** (`llama3.1`, `gemma2`, `llama2`) para gene
 7. [Uso de la API](#uso-de-la-api)
 8. [Autenticación (API Key)](#autenticación-api-key)
 9. [Endpoints](#endpoints)
-10. [Contribución](#contribución)
-11. [Licencia](#licencia)
 
 ---
 
@@ -160,9 +158,10 @@ dependiendo del modelo que quieras usar.
     ```json
     {
         "data": ["fantasía"],
-        "payload": [],
+        "payload": "generos",
         "cantidad": 1,
-        "status": "ok"
+        "status": "ok",
+        "model":"llama3.1"
     }
     ```
 ## 2. Temas Principales ##
@@ -180,9 +179,10 @@ dependiendo del modelo que quieras usar.
     ```json
     {
         "data": ["amistad", "traición"],
-        "payload": [],
+        "payload": "temas_principales",
         "cantidad": 2,
-        "status": "ok"
+        "status": "ok",
+        "model":"llama3.1"
     }
     ```
 ## 3. Autores ##
@@ -200,9 +200,10 @@ dependiendo del modelo que quieras usar.
     ```json
     {
         "data": ["Gabriel García Márquez"],
-        "payload": [],
+        "payload": "autores",
         "cantidad": 1,
-        "status": "ok"
+        "status": "ok",
+        "model":"llama3.1"
     }
     ```
 ## 4. Lecturas Previas ##
@@ -220,8 +221,65 @@ dependiendo del modelo que quieras usar.
     ```json
     {
         "data": ["Crimen y castigo"],
-        "payload": [],
+        "payload": "lecturas_previas",
         "cantidad": 1,
-        "status": "ok"
+        "status": "ok",
+        "model":"llama3.1"
     }
     ```
+## 5. Cantidad de Hojas ##
+**POST `/cantidad`**
+
+- **Descripción:** Indica si se pide o recomienda un número de páginas/hojas para el libro.
+- Cuerpo (Request Body):
+
+    ```json
+    {
+        "entrada": "Quiero un libro corto, de unas 200 páginas máximo"
+    }
+    ```
+- Ejemplo de Respuesta:
+    ```json
+    {
+        "data": ["200"],
+        "payload": "cantidad",
+        "cantidad": 1,          
+        "status": "ok",
+        "model":"llama3.1"
+    }
+    ```
+## 6. Ambientación ##
+**POST `/ambientacion`**
+
+- **Descripción:** Indica si se habla o pide una ambientación específica (época, lugar, etc.).
+- Cuerpo (Request Body):
+
+    ```json
+    {
+        "entrada": "Quiero una novela ambientada en la época medieval."
+    }
+    ```
+- Ejemplo de Respuesta:
+    ```json
+    {
+        "data": ["época medieval"],
+        "payload": "cantidad",
+        "cantidad": 1,          
+        "status": "ok",
+        "model":"llama3.1"
+    }
+    ```
+---
+Códigos de Error Comunes
+- **400 Bad Request**
+    
+    Cuando falta la propiedad entrada en el body.
+
+- **401 Unauthorized**
+
+    Cuando no se envía la API Key o es incorrecta.
+
+- **500 Internal Server Error**
+
+    Error interno, por ejemplo si Ollama no responde o ocurre un problema de parseo.
+---
