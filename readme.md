@@ -65,6 +65,12 @@ Permite manejar distintos **modelos** (`llama3.1`, `gemma2`, `llama2`) para gene
   npm run dev
   ```
 
+- Modo Producción:
+
+  ```bash
+  npm start
+  ```
+
 Por defecto, el microservicio se ejecuta en el puerto definido en process.env.PORT o en 3000.
 
 ## **Variables de Entorno**
