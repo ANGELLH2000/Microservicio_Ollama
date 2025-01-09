@@ -1,16 +1,20 @@
-# Setup Node
-FROM node:18-alpine as build
+# Usar la imagen base de Node.js
+FROM node:18
 
-# Dependency and Build
+# Establecer el directorio de trabajo
 WORKDIR /app
+
+# Copiar el package.json y package-lock.json
 COPY package*.json ./
+
+# Instalar dependencias
 RUN npm install
 
+# Copiar el resto de la aplicación
 COPY . .
 
-# Create JS Build
-# RUN npm run build
-
+# Exponer el puerto
 EXPOSE 4000
 
-CMD ["node", "index.js"]
+# Ejecutar la aplicación
+CMD ["node", "src/index.js"]
